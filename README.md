@@ -1,38 +1,34 @@
 # Crys e Alexa
 
-**Uma integração para conversar com IA pela Alexa.**
+> “Pergunte para Crys o que é a missão Apollo treze.”
 
-[English](README.en.md) · [Gustavo Amaral](https://github.com/EagleKhan0505)
+![Registro real do simulador Alexa respondendo à pergunta sobre Apollo 13](assets/simulador-apollo13.jpg)
 
-## A ideia
+*Teste no simulador da Alexa em 03/11/2026. A imagem mostra a pergunta e a resposta devolvida pela integração; o recorte exclui os identificadores técnicos da conta e da skill.*
 
-Quis levar a experiência de conversar com uma assistente de IA para uma interface por voz. A Crys conecta uma skill da Alexa à API da OpenAI, permitindo formular perguntas em português e receber respostas curtas, adequadas à conversa falada.
+[English](README.en.md) · [Portfólio](https://github.com/EagleKhan0505)
 
-## O que foi construído
+Minha intenção com a Crys é poder conversar com uma assistente de IA pela Alexa, em português. Para isso, conectei uma skill da Alexa à API da OpenAI. A entrada vem da interação por voz, a integração trata a pergunta e a Alexa apresenta a resposta em seu próprio fluxo.
 
-- Skill personalizada em português do Brasil, com abertura, perguntas, ajuda e encerramento.
-- Integração da Alexa com a API da OpenAI em um backend Node.js hospedado na nuvem.
-- Contexto curto de sessão para dar continuidade à conversa.
-- Busca web com fontes apresentadas no cartão da resposta.
-- Tratamento de falhas e limites de tempo compatíveis com uma interação por voz.
-- Recuperação da credencial em serviço de segredos, sem chave embutida no código.
+## O desafio aparece quando a resposta precisa ser falada
 
-```mermaid
-flowchart LR
-    A[Pergunta pela Alexa] --> B[Skill Crys]
-    B --> C[API da OpenAI]
-    C --> D[Resposta curta em português]
-    D --> A
-```
+Uma conversa por voz tem um ritmo diferente. Uma resposta extensa fica cansativa de ouvir; uma consulta demorada pode ultrapassar o tempo que a Alexa permite esperar. O trabalho envolveu ajustar a integração a essas condições, com instruções para respostas curtas, contexto recente da conversa e controle de tempo.
 
-## Minha contribuição
+O fluxo usa a **Responses API** e inclui busca na web quando necessário. As respostas de voz priorizam concisão; as fontes podem acompanhar a resposta no cartão da Alexa. Isso separa a fala, que precisa ser simples de acompanhar, do material que pode ser consultado depois.
 
-Defini a experiência desejada, conduzi a integração com apoio de IA e acompanhei os testes e a investigação de falhas. O desenvolvimento envolve transformar uma conversa em um fluxo que precisa lidar com reconhecimento de pedidos, contexto, tempo de resposta e serviços externos.
+## O que o registro demonstra
 
-## Estado atual
+A captura mostra uma pergunta direta sobre Apollo 13 recebendo resposta no simulador. Os registros de desenvolvimento também incluem a abertura da skill e uma consulta com busca e fontes sobre Artemis.
 
-Protótipo implantado no ambiente de desenvolvimento da Alexa. Perguntas e busca com fontes foram exercitadas no simulador; o funcionamento por voz no Echo físico ainda precisa de validação completa. O projeto utiliza a API da OpenAI e não acessa as conversas ou memórias da conta do ChatGPT.
+São testes do ambiente de desenvolvimento da Alexa. O funcionamento consistente em um Echo físico ainda não está confirmado, e revisões locais posteriores não devem ser confundidas com a versão testada no simulador.
 
-**Tecnologias:** Node.js, Alexa Skills, OpenAI API, AWS STS e Secrets Manager.
+## Escolhas da implementação
 
-Este repositório apresenta a integração. Código, credenciais, identificadores de infraestrutura e configurações da conta permanecem privados.
+- **Interface:** skill customizada em português do Brasil, integrada ao fluxo da Alexa.
+- **Conversa:** contexto curto e respostas orientadas à escuta, com limite de extensão.
+- **Integração:** Node.js, Alexa Skills Kit e OpenAI Responses API.
+- **Operação:** controle de prazo da requisição e credenciais separadas do conteúdo apresentado ao usuário.
+
+Este projeto é a integração **Alexa ↔ API da OpenAI**. Não depende de acessar o histórico ou a memória de uma conta do ChatGPT. As chamadas à API seguem seus próprios custos de uso.
+
+A apresentação pública contém o registro do teste e uma visão da solução. Código completo, credenciais e configuração da infraestrutura permanecem privados.
