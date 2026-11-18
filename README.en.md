@@ -1,10 +1,14 @@
 # Crys and Alexa
 
+**In development**<br>
+Earliest record: November 3, 2026 · Last recorded update: November 3, 2026<br>
+<sub>Presentation updated on November 17, 2026.</sub>
+
 > “Ask Crys what the Apollo thirteen mission is.”
 
 ![Actual Alexa simulator record answering a question about Apollo 13 in Portuguese](assets/simulador-apollo13.jpg)
 
-*Alexa simulator test from November 3, 2026. The crop retains the question and response while excluding account and skill identifiers.*
+*Alexa simulator test from November 3, 2026: the question and the response returned by the integration.*
 
 [Português](README.md) · [Portfolio](https://github.com/EagleKhan0505)
 
@@ -29,6 +33,6 @@ These are Alexa development-environment tests. Reliable operation on a physical 
 - **Integration:** Node.js, Alexa Skills Kit and the OpenAI Responses API.
 - **Operation:** request deadlines and credentials kept outside user-facing content.
 
-This is an **Alexa ↔ OpenAI API** integration. It does not access a ChatGPT account's history or memory. API calls have their own usage costs.
+This is an **Alexa ↔ OpenAI API** integration. API calls have their own usage costs.
 
 This public presentation includes the test record and an overview. Full code, credentials and infrastructure configuration remain private.
